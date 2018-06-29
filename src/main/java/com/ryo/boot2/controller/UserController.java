@@ -11,8 +11,12 @@ public class UserController {
     private UserService userService;
 
 
+    /*
+    2132131
+    * */
     public User getUserById(@PathVariable(value = "id")int id)
     {
-        return userService.selectByPrimaryKey(id);
+
+           return userService.selectByPrimaryKey(id);
     }
 }
