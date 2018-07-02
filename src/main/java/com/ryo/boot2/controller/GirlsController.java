@@ -23,6 +23,7 @@ public class GirlsController {
     @RequestMapping(value = "/get",method = RequestMethod.GET)
     public List<Girls> getGirlslist()
     {
+
         return   girlsService.selectAll();
     }
 

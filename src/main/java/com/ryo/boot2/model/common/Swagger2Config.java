@@ -19,7 +19,7 @@ public class Swagger2Config {
     public Docket createRestApi()
     {
         return  new Docket(DocumentationType.SWAGGER_2)
-                .groupName("girlsAPI接口文档")
+                .groupName("支付API接口文档")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.ryo.boot2.controller"))
@@ -29,10 +29,10 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("test系统")
-                .description("girls服务")
-                .termsOfServiceUrl("http://blog.52itstyle.com")
+                .description("支付服务").build();
+              /*  .termsOfServiceUrl("http://blog.52itstyle.com")
                 .contact(new Contact("socool网 ", "http://blog.52itstyle.com", "345849402@qq.com"))
-                .version("1.0").build();
+                .version("1.0").build();*/
     }
 
 }
