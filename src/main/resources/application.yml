@@ -29,6 +29,13 @@ spring:
     #\u6253\u5F00PSCache\uFF0C\u5E76\u6307\u5B9A\u6BCF\u4E2A\u8FDE\u63A5\u4E0APSCache\u7684\u5927\u5C0F\u3002oracle\u8BBE\u4E3Atrue\uFF0Cmysql\u8BBE\u4E3Afalse\u3002\u5206\u5E93\u5206\u8868\u8F83\u591A\u63A8\u8350\u8BBE\u7F6E\u4E3Afalse
     pool-prepared-statements: false
     max-pool-prepared-statement-per-connection-size: 20
+  thymeleaf:
+    cache: false
+  logging.config: classpath:log/logback-spring.xml
+  logging.path: D:/nmyslog/nmys
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
 redis:
   database: 0
   host: 127.0.0.1

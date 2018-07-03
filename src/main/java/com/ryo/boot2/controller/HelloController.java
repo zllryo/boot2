@@ -2,21 +2,27 @@ package com.ryo.boot2.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ryo.boot2.service.common.MongoLogDao;
 import com.ryo.boot2.model.Girls;
 import com.ryo.boot2.model.User;
 import com.ryo.boot2.model.common.CommonConfig;
+import com.ryo.boot2.model.common.MongoLog;
 import com.ryo.boot2.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @ApiIgnore
-@RestController
+@Controller
 @EnableConfigurationProperties({CommonConfig.class})
 public class HelloController {
 
@@ -24,21 +30,30 @@ public class HelloController {
     private UserService userService;
 
     @Autowired
+    private MongoLogDao mongoLogDao;
+
+    @Autowired
     private CommonConfig commonConfig;
 
+    private  final Logger logger=LoggerFactory.getLogger(HelloController.class);
+
     @RequestMapping("/")
-    public  String index()
+    public  String index(ModelMap map)
     {
-        return "hello"+commonConfig.getAddress()+""+commonConfig.getSize();
+        map.addAttribute("host",commonConfig.getAddress()+""+commonConfig.getSize());
+        logger.info("访问首页");
+        return "default";
     }
 
     @RequestMapping("list")
+    @ResponseBody
     public List<User> selectAll()
     {
         return userService.selectAll();
     }
 
     @RequestMapping("listPage")
+    @ResponseBody
     public  List<User> selectAllPage()
     {
         PageHelper.startPage(1,2);
@@ -48,6 +63,7 @@ public class HelloController {
     }
 
     @RequestMapping(value = "insert")
+    @ResponseBody
     public int InsertAll()
     {
 
