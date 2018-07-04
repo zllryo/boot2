@@ -1,5 +1,6 @@
 package com.ryo.boot2.service.Impl;
 
+import com.ryo.boot2.controller.aop.OperateLog;
 import com.ryo.boot2.dao.GirlsMapper;
 import com.ryo.boot2.dao.UserMapper;
 import com.ryo.boot2.model.Girls;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @OperateLog
     public  List<User> selectAll()
     {
         return userMapper.selectAll();

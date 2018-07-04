@@ -2,6 +2,7 @@ package com.ryo.boot2.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ryo.boot2.controller.aop.OperateLog;
 import com.ryo.boot2.service.common.MongoLogDao;
 import com.ryo.boot2.model.Girls;
 import com.ryo.boot2.model.User;
@@ -37,13 +38,23 @@ public class HelloController {
 
     private  final Logger logger=LoggerFactory.getLogger(HelloController.class);
 
-    @RequestMapping("/")
+    @RequestMapping("/default")
     public  String index(ModelMap map)
     {
         map.addAttribute("host",commonConfig.getAddress()+""+commonConfig.getSize());
-        logger.info("访问首页");
         return "default";
     }
+
+    /**
+    *
+     * (用了thymeleaf组件，默认地址变为：templates；需要重定向)
+     * */
+    @RequestMapping("/")
+    public  String indexs()
+    {
+        return "redirect:index.html";
+    }
+
 
     @RequestMapping("list")
     @ResponseBody

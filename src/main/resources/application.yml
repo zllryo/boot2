@@ -36,6 +36,17 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/test
+  aop:
+    auto: true
+    proxy-target-class: true
+  mail:
+    host: smtp.qq.com
+    username: 1301011793@qq.com
+    password: 1234563274748
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
 redis:
   database: 0
   host: 127.0.0.1

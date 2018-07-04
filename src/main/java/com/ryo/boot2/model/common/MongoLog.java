@@ -56,4 +56,5 @@ public class MongoLog {
     public void setThreadname(String threadname) {
         this.threadname = threadname;
     }
+
 }

@@ -18,6 +18,7 @@ public class MongoDBAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
 
     @Override
     protected void append(ILoggingEvent eventObject) {
+        //日志在系统启动就输出，spring还没有初始化（MongoDBAppender不在spring里），所以需要自己BeanMongoDBAppender
         MongoLogDao mongoLogDao=ApplicationContextProvider.getBean(MongoLogDao.class);
         Date day = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

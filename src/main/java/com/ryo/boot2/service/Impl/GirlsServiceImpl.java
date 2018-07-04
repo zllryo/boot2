@@ -1,5 +1,6 @@
 package com.ryo.boot2.service.Impl;
 
+import com.ryo.boot2.controller.aop.OperateLog;
 import com.ryo.boot2.dao.GirlsMapper;
 import com.ryo.boot2.model.Girls;
 import com.ryo.boot2.service.GirlsService;
@@ -28,7 +29,7 @@ public class GirlsServiceImpl implements GirlsService {
         return girlsMapper.selectByPrimaryKey(id);
     }
 
-
+    @OperateLog
     public List<Girls> selectAll() {
         return girlsMapper.selectAll();
     }
