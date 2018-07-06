@@ -35,7 +35,7 @@ spring:
   logging.path: D:/nmyslog/nmys
   data:
     mongodb:
-      uri: mongodb://localhost:27017/test
+      uri: mongodb://172.17.0.3:27017/test
   aop:
     auto: true
     proxy-target-class: true
